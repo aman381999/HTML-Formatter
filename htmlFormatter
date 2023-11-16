@@ -1,0 +1,25 @@
+import "./styles.css";
+import React, { useState } from 'react';
+import beautify from 'js-beautify';
+
+export default function App() {
+  const [htmlInput, setHtmlInput] = useState('');
+
+  const prettifyHTML = () => {
+    // Prettify the HTML using js-beautify
+    const prettifiedHtml = beautify.html_beautify(htmlInput);
+
+    // Update the state with the prettified HTML
+    setHtmlInput(prettifiedHtml);
+  };
+  return (
+    <div>
+      <textarea
+        value={htmlInput}
+        onChange={(e) => setHtmlInput(e.target.value)}
+        placeholder="Enter your HTML here..."
+      />
+      <button onClick={prettifyHTML}>Prettify HTML</button>
+    </div>
+  );
+}
